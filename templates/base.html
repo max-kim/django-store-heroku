@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="static/favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/custom.css">
+</head>
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+			    <div class="col-4 pt-1 text-center">
+				    <div class="header2__logo">
+					    <a class="logo logo_type_link logo_part_yandex" href="https://yandex.ru" tabindex="-1"><span class="logo__text">Яндекс</span></a>
+					    <a class="logo logo_type_link logo_part_market" href="/" tabindex="-1"><span class="logo__text">Маркет</span></a>
+	    			</div>
+		    	</div>
+		    	<div class="col-6 text-left">
+			    	<div class="input-group">
+			    		<input type="text" class="form-control" placeholder="Введите текст для поиска" aria-label="Найти" aria-describedby="button-addon2">
+			    		<div class="input-group-append">
+				    		<button class="btn btn-secondary" type="submit" id="button-addon2">Найти</button>
+			    		</div>
+			    	</div>
+		    	</div>
+                <div class="col-2 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-secondary" href="#">Войти</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2 border-bottom border-top border-gray">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted" href="#">Электроника</a>
+                <a class="p-2 text-muted" href="#">Компьютеры</a>
+                <a class="p-2 text-muted" href="#">Бытовая техника</a>
+                <a class="p-2 text-muted" href="#">Детские товары</a>
+                <a class="p-2 text-muted" href="#">Зоотовары</a>
+                <a class="p-2 text-muted" href="#">Одежда и обувь</a>
+                <a class="p-2 text-muted" href="#">Красота и здоровье</a>
+                <a class="p-2 text-muted" href="#">Авто</a>
+                <a class="p-2 text-muted" href="#">Ещё</a>
+            </nav>
+        </div>
+
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb alert-light h8">
+                    <li class="breadcrumb-item small"><a href="#">Компьютеры</a></li>
+                    <li class="breadcrumb-item active small" aria-current="page" style="$breadcrumb-divider: none;">Ноутбуки</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div>
+            <h2 class="m-3">Ноутбуки</h2>
+        </div>
+
+        {% block content %}
+            There is no content here.
+        {% endblock %}
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

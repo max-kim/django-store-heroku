@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% for product in products %}
+
+    <div class="p-3 bg-white border border-gray row">
+        <div class="col-sm-12 col-md-3">
+            <img class="rounded float-left" alt="150x150" src="https://avatars.mds.yandex.net/get-mpic/195452/img_id561887665197370405/6hq" data-holder-rendered="true" style="width: 150px; height: 150px;">
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="">
+                <a class="" href="#"><h5>Ноутбук Apple MacBook Pro 13 with Retina display Mid 2017</h5></a>
+            </div>
+            <div class="">
+                <span class="badge badge-success">4.5</span><span class="badge badge-success cst-bage"> </span>
+            </div>
+            <div class="">
+            </div>
+            <div class="">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <a class="text-dark" href="#"><h5>от 79 820 ₽</h5></a>
+        </div>
+    </div>
+
+{% endfor %}
