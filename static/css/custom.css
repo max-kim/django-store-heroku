@@ -1,0 +1,17 @@
+.breadcrumb > li.breadcrumb-item + li.breadcrumb-item:before {
+	content: "•" !important;
+}
+.logo{
+	font-size: 2.1rem;
+	font-weight: 250;
+    line-height: 1;
+	letter-spacing: 0em;
+	font: Arial,Helvetica,sans-serif;
+	font-stretch: extra-condensed;
+}
+.logo_part_demo{
+	font-weight: 350;
+}
+.logo_fst{
+	color: red;
+}

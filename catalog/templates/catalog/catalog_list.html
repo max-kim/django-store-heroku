@@ -1,26 +1,62 @@
 {% extends 'base.html' %}
 
-{% for product in products %}
+{% block content %}
 
-    <div class="p-3 bg-white border border-gray row">
-        <div class="col-sm-12 col-md-3">
-            <img class="rounded float-left" alt="150x150" src="https://avatars.mds.yandex.net/get-mpic/195452/img_id561887665197370405/6hq" data-holder-rendered="true" style="width: 150px; height: 150px;">
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="">
-                <a class="" href="#"><h5>Ноутбук Apple MacBook Pro 13 with Retina display Mid 2017</h5></a>
-            </div>
-            <div class="">
-                <span class="badge badge-success">4.5</span><span class="badge badge-success cst-bage"> </span>
-            </div>
-            <div class="">
-            </div>
-            <div class="">
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <a class="text-dark" href="#"><h5>от 79 820 ₽</h5></a>
-        </div>
+    {% block breadcrumb %}
+    {% endblock %}
+
+    <div>
+        <h2 class="m-3">{{category|capfirst}}</h2>
     </div>
 
-{% endfor %}
+	{% for product in products %}
+
+		<div class="p-3 bg-white border border-gray row">
+			<div class="col-sm-12 col-md-3">
+				<img class="rounded float-left" alt="150x150" src="{{ if product.images }}{{  }}" data-holder-rendered="true" style="width: 150px; height: 150px;">
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="">
+					<a class="" href="{% product.get_absolute_url %}"><h5>{{ product }}</h5></a>
+				</div>
+				<div class="">
+					<span class="badge badge-success">4.5</span><span class="ml-2 text-muted">количество отзывов: {{ product.comment|length }}</span>
+				</div>
+				<div class="">
+
+					{% for key, value in product.characteristics.items %}
+						<div class="">{{ key|capfirst }}: {{ value }}</div>
+						<div class="">Процессор: Core i5</div>
+						<div class="">Частота процессора: 2300 МГц</div>
+						<div class="">Объем оперативной памяти: 8 ГБ</div>
+						<div class="">Объем жесткого диска: 128...256 ГБ</div>
+						<div class="">Диагональ экрана: 13.3 "</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<a class="text-dark" href="#"><h5>от {{ product.price|floatformat:0 }} ₽</h5></a>
+			</div>
+			</div>
+		</div>
+
+	{% endfor %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% if breadcrumbs|length > 0 %}
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb alert-light h8">
+                    {% for value in breadcrumbs %}
+                        {% if breadcrumbs|last = value %}
+                            <li class="breadcrumb-item small active" aria-current="page">{{ value }}</li>
+                        {% else %}
+                            <li class="breadcrumb-item small"><a href="#">{{ value }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </nav>
+        </div>
+    {% endif %}
+{% endblock %}
