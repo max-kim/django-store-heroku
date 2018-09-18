@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-sm-12 col-md-6">
 				<div class="">
-					<a class="" href="{% product.get_absolute_url %}"><h5>{{ product }}</h5></a>
+					<a class="" href="{{ product.get_absolute_url }}}"><h5>{{ product }}</h5></a>
 				</div>
 				<div class="">
 					<span class="badge badge-success">4.5</span><span class="ml-2 text-muted">количество отзывов: {{ product.comment|length }}</span>
@@ -52,7 +52,7 @@
                         {% if breadcrumbs|last = value %}
                             <li class="breadcrumb-item small active" aria-current="page">{{ value }}</li>
                         {% else %}
-                            <li class="breadcrumb-item small"><a href="#">{{ value }}</a></li>
+                            <li class="breadcrumb-item small"><a href="{{ value.get_absolute_url }}">{{ value }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ol>

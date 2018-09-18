@@ -40,7 +40,7 @@
         <div class="nav-scroller py-1 mb-2 border-bottom border-top border-gray">
             <nav class="nav d-flex justify-content-between">
                 {% for category in categories %}
-                    <a class="p-2 text-muted" href="{% url 'category_list_url' %}">{{ category|capfirst }}</a>
+                    <a class="p-2 text-muted" href="{{ category.get_absolute_url }}">{{ category|capfirst }}</a>
                 {% endfor %}
             </nav>
         </div>
