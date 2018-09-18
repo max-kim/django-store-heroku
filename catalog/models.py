@@ -1,25 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.shortcuts import reverse
+from django.utils.text import slugify
+from time import time
 
 
 def to_slug_case(value: str) -> str:
-    value = value.replace(' ', '_')
-    value = value.replace('.', '_')
-    value = value.replace(',', '_')
-    value = value.replace('/', '_')
-    value = value.replace('\\', '_')
-    value = value.replace('*', '_')
-    value = value.replace('+', '_')
-    value = value.replace('=', '_')
-    value = value.replace(':', '_')
-    value = value.replace(';', '_')
-    return value.lower()
+    return '{}-{}'.format(slugify(value, allow_unicode=True), str(int(time())))
 
 
 class Category(models.Model):
     title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, default=to_slug_case(str(title)))
 
     def __str__(self):
         return '{}'.format(self.title)
+
+    def get_absolute_url(self):
+        return reverse('category_url', kwargs={'category_slug': self.slug})
 
 
 class Product(models.Model):
@@ -30,15 +28,17 @@ class Product(models.Model):
     image = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
+
+    def get_absolute_url(self):
+        return reverse('product_url', kwargs={'category_slug': self.category.slug, 'product_slug': self.slug})
 
 
 class Characteristic(models.Model):
     title = models.CharField(max_length=255, db_index=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}: {}'.format(self.category, self.title)
+        return str(self.title)
 
 
 class CharacteristicValue(models.Model):
@@ -57,7 +57,9 @@ class Price(models.Model):
 
 class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     comment = models.TextField(blank=False)
+    date_add = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.comment
