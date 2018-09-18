@@ -23,8 +23,9 @@ class Category(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     slug = models.SlugField(max_length=255, unique=True, default=to_slug_case(str(title)))
+    price = models.FloatField(default=0.00)
     image = models.CharField(max_length=255)
 
     def __str__(self):
@@ -43,21 +44,13 @@ class Characteristic(models.Model):
 
 class CharacteristicValue(models.Model):
     characteristic = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='characteristics')
     value = models.CharField(max_length=255, db_index=True)
 
 
-class Price(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    price = models.FloatField(default=0.00)
-
-    def __str__(self):
-        return str(self.price)
-
-
 class Comment(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, related_name='comments')
     comment = models.TextField(blank=False)
     date_add = models.DateField(auto_now_add=True)
 
