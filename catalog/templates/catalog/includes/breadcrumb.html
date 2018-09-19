@@ -1,0 +1,16 @@
+{% if breadcrumbs|length > 0 %}
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb alert-light h8">
+                {% for value in breadcrumbs %}
+                    {% if breadcrumbs|last == value %}
+                        <li class="breadcrumb-item small active" aria-current="page">{{ value }}</li>
+                    {% else %}
+                        <li class="breadcrumb-item small"><a href="{{ value.get_absolute_url }}">{{ value }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+{% endif %}
+

@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from demo_store.views import index_view
 
 urlpatterns = [
+    path('', index_view),
     path('admin/', admin.site.urls),
-    path('/', include('catalog.urls'))
+    path('catalog/', include('catalog.urls'))
 ]

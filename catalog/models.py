@@ -11,28 +11,39 @@ def to_slug_case(value: str) -> str:
 
 class Category(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(max_length=255, unique=True, default=to_slug_case(str(title)))
 
     def __str__(self):
         return '{}'.format(self.title)
 
+    def get_context_data(self, **kwargs):
+        context = super(Product, self).get_context_data(**kwargs)
+        context['breadcrumbs'] = list(self.title)
+        context['categories'] = Category.objects.all()
+        return context
+
     def get_absolute_url(self):
-        return reverse('category_url', kwargs={'category_slug': self.slug})
+        return reverse('category_url', kwargs={'pk': self.id})
 
 
 class Product(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    slug = models.SlugField(max_length=255, unique=True, default=to_slug_case(str(title)))
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', primary_key=True)
     price = models.FloatField(default=0.00)
+    rating = models.FloatField(default=0.00)
     image = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.title)
 
+    def get_context_data(self, **kwargs):
+        context = super(Product, self).get_context_data(**kwargs)
+        context['breadcrumbs'] = list(self.category, self.title)
+        context['categories'] = Category.objects.all()
+        return context
+
     def get_absolute_url(self):
-        return reverse('product_url', kwargs={'category_slug': self.category.slug, 'product_slug': self.slug})
+        return reverse('product_url', kwargs={'category': self.category.id, 'pk': self.id})
 
 
 class Characteristic(models.Model):

@@ -2,8 +2,7 @@
 
 {% block content %}
 
-    {% block breadcrumb %}
-    {% endblock %}
+    {% include 'catalog/includes/breadcrumb.html' %}
 
     <div>
         <h2 class="m-3">{{category|capfirst}}</h2>
@@ -13,7 +12,7 @@
 
 		<div class="p-3 bg-white border border-gray row">
 			<div class="col-sm-12 col-md-3">
-				<img class="rounded float-left" alt="150x150" src="{{ if product.images }}{{  }}" data-holder-rendered="true" style="width: 150px; height: 150px;">
+				<img class="rounded float-left" alt="150x150" src="{{ product.image }}" data-holder-rendered="true" style="width: 150px; height: 150px;">
 			</div>
 			<div class="col-sm-12 col-md-6">
 				<div class="">
@@ -26,11 +25,6 @@
 
 					{% for key, value in product.characteristics.items %}
 						<div class="">{{ key|capfirst }}: {{ value }}</div>
-						<div class="">Процессор: Core i5</div>
-						<div class="">Частота процессора: 2300 МГц</div>
-						<div class="">Объем оперативной памяти: 8 ГБ</div>
-						<div class="">Объем жесткого диска: 128...256 ГБ</div>
-						<div class="">Диагональ экрана: 13.3 "</div>
 					{% endfor %}
 				</div>
 			</div>
@@ -41,22 +35,4 @@
 		</div>
 
 	{% endfor %}
-{% endblock %}
-
-{% block breadcrumb %}
-    {% if breadcrumbs|length > 0 %}
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb alert-light h8">
-                    {% for value in breadcrumbs %}
-                        {% if breadcrumbs|last = value %}
-                            <li class="breadcrumb-item small active" aria-current="page">{{ value }}</li>
-                        {% else %}
-                            <li class="breadcrumb-item small"><a href="{{ value.get_absolute_url }}">{{ value }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ol>
-            </nav>
-        </div>
-    {% endif %}
 {% endblock %}
