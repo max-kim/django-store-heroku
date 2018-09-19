@@ -15,11 +15,8 @@ class Category(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
-    def get_context_data(self, **kwargs):
-        context = super(Product, self).get_context_data(**kwargs)
-        context['breadcrumbs'] = list(self.title)
-        context['categories'] = Category.objects.all()
-        return context
+    def get_breadcrumbs(self):
+        return [self.title, ]
 
     def get_absolute_url(self):
         return reverse('category_url', kwargs={'pk': self.id})
@@ -28,7 +25,7 @@ class Category(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', primary_key=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     price = models.FloatField(default=0.00)
     rating = models.FloatField(default=0.00)
     image = models.CharField(max_length=255)
@@ -36,14 +33,11 @@ class Product(models.Model):
     def __str__(self):
         return str(self.title)
 
-    def get_context_data(self, **kwargs):
-        context = super(Product, self).get_context_data(**kwargs)
-        context['breadcrumbs'] = list(self.category, self.title)
-        context['categories'] = Category.objects.all()
-        return context
+    def get_breadcrumbs(self):
+        return [self.category, self.title]
 
     def get_absolute_url(self):
-        return reverse('product_url', kwargs={'category': self.category.id, 'pk': self.id})
+        return reverse('product_url', kwargs={'category__pk': self.category.id, 'pk': self.id})
 
 
 class Characteristic(models.Model):
@@ -57,6 +51,9 @@ class CharacteristicValue(models.Model):
     characteristic = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='characteristics')
     value = models.CharField(max_length=255, db_index=True)
+
+    def __str__(self):
+        return '{}: {} - {}'.format(self.product, self.characteristic, self.value)
 
 
 class Comment(models.Model):

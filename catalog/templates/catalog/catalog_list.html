@@ -8,31 +8,42 @@
         <h2 class="m-3">{{category|capfirst}}</h2>
     </div>
 
-	{% for product in category.products %}
+	{% if category.products %}
 
-		<div class="p-3 bg-white border border-gray row">
-			<div class="col-sm-12 col-md-3">
-				<img class="rounded float-left" alt="150x150" src="{{ product.image }}" data-holder-rendered="true" style="width: 150px; height: 150px;">
-			</div>
-			<div class="col-sm-12 col-md-6">
-				<div class="">
-					<a class="" href="{{ product.get_absolute_url }}}"><h5>{{ product }}</h5></a>
-				</div>
-				<div class="">
-					<span class="badge badge-success">4.5</span><span class="ml-2 text-muted">количество отзывов: {{ product.comments|length }}</span>
-				</div>
-				<div class="">
+        {% for product in category.products.all %}
 
-					{% for key, value in product.characteristics.items %}
-						<div class="">{{ key|capfirst }}: {{ value }}</div>
-					{% endfor %}
-				</div>
-			</div>
-			<div class="col-sm-12 col-md-3">
-				<a class="text-dark" href="#"><h5>от {{ product.price|floatformat:0 }} ₽</h5></a>
-			</div>
-			</div>
-		</div>
+            <div class="p-3 bg-white border border-gray row">
+                <div class="col-sm-12 col-md-3">
+                    <img class="rounded float-left" alt="150x150" src="{{ product.image }}" data-holder-rendered="true" style="width: 150px; height: 150px;">
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="">
+                        <a class="" href="{{ product.get_absolute_url }}}"><h5>{{ product }}</h5></a>
+                    </div>
+                    <div class="">
+                        <span class="badge badge-success">4.5</span><span class="ml-2 text-muted">количество отзывов: {{ product.comments|length }}</span>
+                    </div>
+                    <div class="">
 
-	{% endfor %}
+                        {% for key, value in product.characteristics.items %}
+                            <div class="">{{ key|capfirst }}: {{ value }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <a class="text-dark" href="#"><h5>от {{ product.price|floatformat:0 }} ₽</h5></a>
+                </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div>
+            <h4 class="m-3">Нет товаров в данной категории.</h4>
+        </div>
+
+    {% endif %}
+
 {% endblock %}
