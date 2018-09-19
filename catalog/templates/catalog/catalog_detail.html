@@ -5,17 +5,17 @@
     {% include 'catalog/includes/breadcrumb.html' %}
 
     <div>
-		<h2 class="m-3">Ноутбук Apple MacBook Pro 13 with Retina display Mid 2017</h2>
+		<h2 class="m-3">{{ product.title }}</h2>
 	</div>
 
 	<div class="pl-3 pb-2">
-		<span class="badge badge-success">4.5</span><span class="ml-2 text-muted">количество отзывов: 0</span>
+		<span class="badge badge-success">{{ product.rating|floatformat:1 }}</span><span class="ml-2 text-muted">количество отзывов: {{ product.comments|length }}</span>
 	</div>
 
 	<div class="p-3 pb-5 bg-white row">
 		<div class="col-sm-12 col-md-5">
 			<div class="d-flex justify-content-center align-items-center">
-				<img class="rounded float-left" alt="320x320" src="https://avatars.mds.yandex.net/get-mpic/195452/img_id561887665197370405/6hq" data-holder-rendered="true" style="width: 320px; height: 320px;">
+				<img class="rounded float-left" alt="{{ product.title }}" src="{{ product.image }}" data-holder-rendered="true" width="320" height="200">
 			</div>
 		</div>
 		<div class="col-sm-8 col-md-4 mb-2">

@@ -22,3 +22,4 @@ class ProductView(generic.DetailView):
         context = super(ProductView, self).get_context_data(**kwargs)
         context['breadcrumbs'] = context['product'].get_breadcrumbs()
         context['categories'] = Category.objects.all()
+        return context
