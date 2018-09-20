@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    {% load humanize %}
+
     {% include 'catalog/includes/breadcrumb.html' %}
 
     <div>
@@ -14,24 +16,32 @@
 
             <div class="p-3 bg-white border border-gray row">
                 <div class="col-sm-12 col-md-3">
-                    <img class="rounded float-left" alt="{{ product.title }}" src="{{ product.image }}" data-holder-rendered="true" style="width: 160px; height: 100px;">
+                    <a class="" href="{{ product.get_absolute_url }}"><img class="rounded float-left"
+                                                                           alt="{{ product.title }}" src="{{ product.image }}"
+                                                                           data-holder-rendered="true" width="200px" height="125px"></a>
                 </div>
                 <div class="col-sm-12 col-md-6 pt-2">
                     <div class="">
                         <a class="" href="{{ product.get_absolute_url }}"><h5>{{ product }}</h5></a>
                     </div>
                     <div class="">
-                        <span class="badge badge-success">{{ product.rating|floatformat:1 }}</span><span class="ml-2 text-muted">количество отзывов: {{ product.comments|length }}</span>
+                        <span class="badge badge-success">{{ product.rating|floatformat:1 }}</span><span
+                            class="ml-2 text-muted">количество отзывов: {{ product.comments.all|length }}</span>
                     </div>
-                    <div class="">
+                    <div class="mt-2">
 
-                        {% for key, value in product.characteristics.items %}
-                            <div class="">{{ key|capfirst }}: {{ value }}</div>
+                        {% for charact in product.characteristics.all %}
+                            <div class="">{{ charact.get_value }}</div>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 pt-2">
-                    <a class="text-dark" href="#"><h5>{{ product.price|floatformat:0 }} ₽</h5></a>
+                    <div class="">
+	    			    <h5>{{ product.price|floatformat:0|intcomma }} ₽</h5>
+                    </div>
+    				<div class="mb-3">
+	    				<a class="btn btn-primary" href="#">Купить</a>
+		    		</div>
                 </div>
             </div>
 

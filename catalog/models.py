@@ -52,13 +52,19 @@ class CharacteristicValue(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='characteristics')
     value = models.CharField(max_length=255, db_index=True)
 
+    class Meta:
+        ordering = ['characteristic__id']
+
     def __str__(self):
         return '{}: {} - {}'.format(self.product, self.characteristic, self.value)
+
+    def get_value(self):
+        return '{}: {}'.format(self.characteristic, self.value)
 
 
 class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='comments')
     comment = models.TextField(blank=False)
     date_add = models.DateField(auto_now_add=True)
 

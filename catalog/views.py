@@ -1,4 +1,5 @@
 from django.views import generic
+from django.db.models import Count
 
 from .models import Category, Product
 
@@ -23,5 +24,11 @@ class ProductView(generic.DetailView):
         context = super(ProductView, self).get_context_data(**kwargs)
         context['title'] = context['product'].title
         context['breadcrumbs'] = context['product'].get_breadcrumbs()
+        context['category'] = context['product'].category
         context['categories'] = Category.objects.all()
         return context
+
+    def get_queryset(self):
+        queryset = super(ProductView, self).get_queryset()
+        queryset = queryset.annotate(comments_count=Count('comments__id'))
+        return queryset
