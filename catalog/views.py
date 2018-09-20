@@ -9,6 +9,7 @@ class CategoryView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
+        context['title'] = context['category'].title
         context['breadcrumbs'] = context['category'].get_breadcrumbs()
         context['categories'] = Category.objects.all()
         return context
@@ -20,6 +21,7 @@ class ProductView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductView, self).get_context_data(**kwargs)
+        context['title'] = context['product'].title
         context['breadcrumbs'] = context['product'].get_breadcrumbs()
         context['categories'] = Category.objects.all()
         return context
