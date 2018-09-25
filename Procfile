@@ -1,1 +1,1 @@
-web: gunicorn django-demo-store.wsgi
+web: gunicorn django_demo_store.wsgi
