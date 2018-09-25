@@ -8,4 +8,5 @@ def index_view(request):
     if category:
         return HttpResponseRedirect(category.get_absolute_url())
     else:
-        return HttpResponseNotFound('404 - PAGE NOT FOUND :(')
+        return HttpResponseRedirect('www.google.com')
+        # return HttpResponseNotFound('404 - PAGE NOT FOUND :(')
