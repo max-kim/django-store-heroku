@@ -1,1 +1,1 @@
-web: gunicorn demo-store.wsgi --log-file -
+web: gunicorn django-demo-store:app --log-file -
