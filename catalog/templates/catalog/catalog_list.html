@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-12 col-md-3 pt-2">
                     <div class="">
-	    			    <h5>{{ product.price|floatformat:0|intcomma }} ₽</h5>
+	    			    <h5>{{ product.get_price|intcomma }} ₽</h5>
                     </div>
     				<div class="mb-3">
 	    				<a class="btn btn-primary" href="#">Купить</a>

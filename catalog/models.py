@@ -33,6 +33,9 @@ class Product(models.Model):
     def __str__(self):
         return str(self.title)
 
+    def get_price(self):
+        return self.price / 100
+
     def get_breadcrumbs(self):
         return [self.category, self.title]
 

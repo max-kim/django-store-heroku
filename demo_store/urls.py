@@ -27,7 +27,9 @@ urlpatterns = [
     path('catalog/', include('catalog.urls'))
 ]
 
+'''
 if settings.DEBUG:
     urlpatterns += [
         re_path(r'^static/(?P<path>.*)$', views.serve),
     ]
+'''
