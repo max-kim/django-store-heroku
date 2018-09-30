@@ -26,15 +26,12 @@ class Product(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    price = models.FloatField(default=0.00)
-    rating = models.FloatField(default=0.00)
+    price = models.IntegerField(default=0)
+    rating = models.FloatField(default=0.0)
     image = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.title)
-
-    def get_price(self):
-        return self.price / 100
 
     def get_breadcrumbs(self):
         return [self.category, self.title]

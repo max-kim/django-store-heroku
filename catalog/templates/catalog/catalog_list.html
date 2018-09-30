@@ -10,6 +10,7 @@
         <h2 class="m-3">{{category|capfirst}}</h2>
     </div>
 
+    {% load static %}
 	{% if category.products.all|length %}
 
         {% for product in category.products.all %}
@@ -17,7 +18,7 @@
             <div class="p-3 bg-white border border-gray row">
                 <div class="col-sm-12 col-md-3">
                     <a class="" href="{{ product.get_absolute_url }}"><img class="rounded float-left"
-                                                                           alt="{{ product.title }}" src="{{ product.image }}"
+                                                                           alt="{{ product.title }}" src="{% static product.image %}"
                                                                            data-holder-rendered="true" width="200px" height="125px"></a>
                 </div>
                 <div class="col-sm-12 col-md-6 pt-2">
@@ -37,7 +38,7 @@
                 </div>
                 <div class="col-sm-12 col-md-3 pt-2">
                     <div class="">
-	    			    <h5>{{ product.get_price|intcomma }} ₽</h5>
+	    			    <h5>{{ product.price|intcomma }} ₽</h5>
                     </div>
     				<div class="mb-3">
 	    				<a class="btn btn-primary" href="#">Купить</a>

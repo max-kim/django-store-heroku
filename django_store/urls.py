@@ -1,4 +1,4 @@
-"""demo_store URL Configuration
+"""django_store URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -14,11 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.contrib.staticfiles import views
-from demo_store.views import index_view
+from django.urls import path, include
+from django_store.views import index_view
 
 
 urlpatterns = [
@@ -26,10 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls'))
 ]
-
-'''
-if settings.DEBUG:
-    urlpatterns += [
-        re_path(r'^static/(?P<path>.*)$', views.serve),
-    ]
-'''

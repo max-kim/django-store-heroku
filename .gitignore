@@ -4,3 +4,4 @@
 */test*.*
 */setup.py
 *db.sqlite3
+*staticfiles/*.*

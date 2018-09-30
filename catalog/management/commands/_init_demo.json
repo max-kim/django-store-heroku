@@ -21,11 +21,11 @@
     {"title": "Wi-Fi"}
   ],
   "product":[
-    {"title": "Ноутбук Xiaomi Mi Notebook Pro 15.6\"", "category": 1, "price": 6120000, "rating": 4.5, "image": "https://i1.rozetka.ua/goods/4225293/xiaomi_mi_notebook_pro_15_6_jyu4036cn_images_4225293328.jpg"},
-    {"title": "Ноутбук HP EliteBook 1040 G4 14\"", "category": 1, "price": 12010000, "rating": 5.0, "image": "https://i2.rozetka.ua/goods/7457108/hp_4qy60es_images_7457108610.jpg"},
-    {"title": "Ноутбук Lenovo IdeaPad 530S-14IKB 14\"", "category": 1, "price": 5960000, "rating": 4, "image": "https://i2.rozetka.ua/goods/5726418/lenovo_ideapad_530s_14ikb_81eu00fgra_images_5726418240.jpg"},
-    {"title": "Ноутбук Dell Latitude 5491 14\"", "category": 1, "price": 9950000, "rating": 4.3, "image": "https://i1.rozetka.ua/goods/5956719/dell_n006l549114_ubu_images_5956719072.jpg"},
-    {"title": "Ноутбук Apple MacBook Pro 13 with Retina display", "category": 1, "price": 7995000, "rating": 4.8, "image": "https://i2.rozetka.ua/goods/6820783/50198222_images_6820783302.jpg"}
+    {"title": "Ноутбук Xiaomi Mi Notebook Pro 15.6\"", "category": 1, "price": 61200, "rating": 4.5, "image": "catalog/img/xiaomi_mi_notebook_pro_15_6_images_4225293328.jpg"},
+    {"title": "Ноутбук HP EliteBook 1040 G4 14\"", "category": 1, "price": 120100, "rating": 5.0, "image": "catalog/img/hp_4qy60es_images_7457108610.jpg"},
+    {"title": "Ноутбук Lenovo IdeaPad 530S-14IKB 14\"", "category": 1, "price": 59600, "rating": 4, "image": "catalog/img/lenovo_ideapad_530s_14ikb_images_5726418240.jpg"},
+    {"title": "Ноутбук Dell Latitude 5491 14\"", "category": 1, "price": 99500, "rating": 4.3, "image": "catalog/img/dell_n006l549114_ubu_images_5956719072.jpg"},
+    {"title": "Ноутбук Apple MacBook Pro 13 with Retina display", "category": 1, "price": 79950, "rating": 4.8, "image": "catalog/img/apple_mpxq2ua_images_3524202615.jpg"}
   ],
   "charact_value":[
     {"characteristic": 1, "product": 5, "value": "Intel Core i5"},
